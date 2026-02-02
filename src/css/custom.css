@@ -1,0 +1,163 @@
+/**
+ * Bitmark Documentation Theme
+ * Colors inspired by the marking concept - blue/indigo tones
+ */
+
+:root {
+  /* Primary colors - Royal Purple */
+  --ifm-color-primary: #7c3aed;
+  --ifm-color-primary-dark: #6d28d9;
+  --ifm-color-primary-darker: #5b21b6;
+  --ifm-color-primary-darkest: #4c1d95;
+  --ifm-color-primary-light: #8b5cf6;
+  --ifm-color-primary-lighter: #a78bfa;
+  --ifm-color-primary-lightest: #c4b5fd;
+
+  /* Code styling */
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(124, 58, 237, 0.1);
+
+  /* Link colors */
+  --ifm-link-color: #7c3aed;
+
+  /* Navbar */
+  --ifm-navbar-background-color: #ffffff;
+  --ifm-navbar-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+  /* Footer */
+  --ifm-footer-background-color: #2e1065;
+
+  /* Typography */
+  --ifm-font-family-base: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+}
+
+/* Dark mode */
+[data-theme='dark'] {
+  --ifm-color-primary: #a78bfa;
+  --ifm-color-primary-dark: #8b5cf6;
+  --ifm-color-primary-darker: #7c3aed;
+  --ifm-color-primary-darkest: #6d28d9;
+  --ifm-color-primary-light: #c4b5fd;
+  --ifm-color-primary-lighter: #ddd6fe;
+  --ifm-color-primary-lightest: #ede9fe;
+
+  --docusaurus-highlighted-code-line-bg: rgba(167, 139, 250, 0.2);
+  --ifm-link-color: #a78bfa;
+  --ifm-navbar-background-color: #1a1033;
+  --ifm-footer-background-color: #1a1033;
+  --ifm-background-color: #13091f;
+}
+
+/* Hero gradient */
+.hero--primary {
+  background: linear-gradient(135deg, #5b21b6, #7c3aed);
+}
+
+/* Code blocks */
+.prism-code {
+  border-radius: 8px;
+}
+
+/* Tables */
+table {
+  display: table;
+  width: 100%;
+}
+
+table th {
+  background-color: rgba(124, 58, 237, 0.1);
+}
+
+[data-theme='dark'] table th {
+  background-color: rgba(167, 139, 250, 0.15);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom admonition for Bitmark tips */
+.alert--bitmark {
+  --ifm-alert-background-color: rgba(124, 58, 237, 0.1);
+  --ifm-alert-border-color: #7c3aed;
+}
+
+/* Sidebar uses default Docusaurus chevron styling */
+
+/* Feature cards */
+.feature-card {
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: var(--ifm-card-background-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Algorithm badges */
+.algo-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0.125rem;
+}
+
+.algo-badge--scrypt { background: #f59e0b; color: white; }
+.algo-badge--sha256d { background: #f97316; color: white; }
+.algo-badge--yescrypt { background: #84cc16; color: white; }
+.algo-badge--argon2d { background: #22c55e; color: white; }
+.algo-badge--x17 { background: #14b8a6; color: white; }
+.algo-badge--lyra2rev2 { background: #06b6d4; color: white; }
+.algo-badge--equihash { background: #3b82f6; color: white; }
+.algo-badge--cryptonight { background: #8b5cf6; color: white; }
+
+/* Mark type badges */
+.mark-type {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  color: white;
+}
+
+/* Timeline styling for roadmap */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--ifm-color-primary);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -1.75rem;
+  top: 0.5rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+}

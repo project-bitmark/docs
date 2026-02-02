@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2e1065"/>
+      <stop offset="50%" style="stop-color:#5b21b6"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c4b5fd"/>
+      <stop offset="100%" style="stop-color:#e879f9"/>
+    </linearGradient>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5b21b6"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="100" cy="500" r="200" fill="rgba(139, 92, 246, 0.2)"/>
+  <circle cx="1100" cy="130" r="180" fill="rgba(167, 139, 250, 0.15)"/>
+  <circle cx="600" cy="315" r="300" fill="rgba(124, 58, 237, 0.1)"/>
+
+  <!-- Logo circle background -->
+  <circle cx="600" cy="200" r="80" fill="url(#logoGrad)"/>
+
+  <!-- B letter -->
+  <path d="M565 155 L565 245 L595 245 C615 245 630 233 630 218 C630 208 623 200 613 197 C621 194 627 186 627 177 C627 163 615 155 595 155 L565 155 Z M580 168 L592 168 C602 168 607 172 607 179 C607 186 602 190 592 190 L580 190 L580 168 Z M580 203 L597 203 C608 203 614 208 614 216 C614 224 608 232 597 232 L580 232 L580 203 Z" fill="white"/>
+
+  <!-- Checkmark accent -->
+  <path d="M625 160 L635 170 L650 150" stroke="#c4b5fd" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Title -->
+  <text x="600" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="800" fill="white" text-anchor="middle">Bitmark</text>
+
+  <!-- Subtitle with gradient -->
+  <text x="600" y="400" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="600" fill="url(#textGrad)" text-anchor="middle">Spendable Karma on the Blockchain</text>
+
+  <!-- Tagline -->
+  <text x="600" y="460" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="rgba(255,255,255,0.85)" text-anchor="middle">Likes that carry real value</text>
+
+  <!-- Badges -->
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" fill="white">
+    <rect x="280" y="500" width="120" height="36" rx="18" fill="rgba(255,255,255,0.15)"/>
+    <text x="340" y="524" text-anchor="middle">Fair Launch 2014</text>
+
+    <rect x="420" y="500" width="80" height="36" rx="18" fill="rgba(255,255,255,0.15)"/>
+    <text x="460" y="524" text-anchor="middle">No ICO</text>
+
+    <rect x="520" y="500" width="100" height="36" rx="18" fill="rgba(255,255,255,0.15)"/>
+    <text x="570" y="524" text-anchor="middle">No Premine</text>
+
+    <rect x="640" y="500" width="150" height="36" rx="18" fill="rgba(255,255,255,0.15)"/>
+    <text x="715" y="524" text-anchor="middle">Community Driven</text>
+
+    <rect x="810" y="500" width="110" height="36" rx="18" fill="rgba(255,255,255,0.15)"/>
+    <text x="865" y="524" text-anchor="middle">8 Algorithms</text>
+  </g>
+</svg>
