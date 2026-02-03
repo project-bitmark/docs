@@ -8,26 +8,65 @@ description: Bitmark wallet options and setup guides
 
 Multiple wallet options are available for storing and managing Bitmark.
 
+```mermaid
+flowchart TB
+    subgraph wallets["💼 BITMARK WALLET OPTIONS"]
+        direction LR
+        A["🖥️ **Bitmark Core**<br/>Full Node Wallet<br/><small>✅ Recommended</small>"]
+        B["⚡ **Electrum**<br/>Light Wallet<br/><small>🚧 Coming Soon</small>"]
+        C["🔑 **Brain Wallet**<br/>Key Generator<br/><small>⚠️ Advanced</small>"]
+    end
+
+    style wallets fill:#f3e8ff,stroke:#7c3aed,stroke-width:2px
+    style A fill:#dcfce7,stroke:#22c55e,stroke-width:2px
+    style B fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+    style C fill:#fee2e2,stroke:#ef4444,stroke-width:2px
+```
+
 ## Wallet Comparison
 
-| Wallet | Type | Platforms | Features |
-|--------|------|-----------|----------|
-| Bitmark Core | Full Node | Windows, Linux, macOS | Full validation, mining |
-| Electrum-Bitmark | Light | Windows, Linux, macOS | Fast sync, hardware wallet |
-| Brain Wallet | Web | Browser | Quick access, portable |
+| Wallet | Type | Status | Features |
+|--------|------|--------|----------|
+| Bitmark Core | Full Node | ✅ **Recommended** | Full validation, mining, sending/receiving |
+| Electrum-Bitmark | Light Wallet | 🚧 **Coming Soon** | Fast sync, hardware wallet (WIP) |
+| Brain Wallet | Key Generator | ⚠️ **Advanced Only** | Address generation only, no sending |
 
 ## Bitmark Core (Desktop)
 
+:::tip Recommended
+This is the recommended wallet for full network participation. It validates all transactions and supports mining.
+:::
+
 The official full-node wallet that downloads and validates the entire blockchain.
 
-### Features
+```mermaid
+flowchart TB
+    subgraph core["🖥️ BITMARK CORE FEATURES"]
+        direction TB
+        subgraph row1[" "]
+            direction LR
+            F1["⛓️ **Full Validation**<br/>Verify all transactions"]
+            F2["⛏️ **Mining Support**<br/>Built-in miner"]
+            F3["🔌 **RPC Interface**<br/>Developer API"]
+        end
+        subgraph row2[" "]
+            direction LR
+            F4["🖼️ **Qt GUI**<br/>Desktop interface"]
+            F5["🎛️ **Coin Control**<br/>UTXO management"]
+            F6["📖 **Address Book**<br/>Contact management"]
+        end
+    end
 
-- Full blockchain validation
-- Built-in mining support
-- RPC interface for developers
-- Qt GUI and command-line interfaces
-- Coin control features
-- Address book
+    style core fill:#dcfce7,stroke:#22c55e,stroke-width:2px
+    style row1 fill:transparent,stroke:none
+    style row2 fill:transparent,stroke:none
+    style F1 fill:#f0fdf4,stroke:#22c55e
+    style F2 fill:#f0fdf4,stroke:#22c55e
+    style F3 fill:#f0fdf4,stroke:#22c55e
+    style F4 fill:#f0fdf4,stroke:#22c55e
+    style F5 fill:#f0fdf4,stroke:#22c55e
+    style F6 fill:#f0fdf4,stroke:#22c55e
+```
 
 ### Download
 
@@ -83,9 +122,29 @@ bitmark-cli listtransactions
 
 ## Electrum-Bitmark (Light Wallet)
 
-A lightweight wallet that doesn't require downloading the full blockchain.
+:::info Work in Progress
+The Electrum-Bitmark light wallet is currently under development. Check [GitHub](https://github.com/project-bitmark/electrum-bitmark) for progress and updates.
+:::
 
-### Features
+A lightweight wallet that won't require downloading the full blockchain.
+
+```mermaid
+flowchart LR
+    subgraph status["🚧 DEVELOPMENT STATUS"]
+        direction TB
+        S1["📦 Core Port"] --> S2["🔌 ElectrumX Server"]
+        S2 --> S3["🧪 Testing"]
+        S3 --> S4["🚀 Release"]
+    end
+
+    style status fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+    style S1 fill:#dcfce7,stroke:#22c55e
+    style S2 fill:#fef3c7,stroke:#f59e0b
+    style S3 fill:#fee2e2,stroke:#ef4444
+    style S4 fill:#fee2e2,stroke:#ef4444
+```
+
+### Planned Features
 
 - Fast synchronization (seconds, not hours)
 - Hardware wallet support (Trezor, Ledger)
@@ -94,49 +153,63 @@ A lightweight wallet that doesn't require downloading the full blockchain.
 - Portable (no blockchain download)
 - Watch-only wallets
 
-### Download
+### Repository
 
-Get the latest release from [GitHub](https://github.com/project-bitmark/electrum-bitmark/releases).
+Follow development: [GitHub](https://github.com/project-bitmark/electrum-bitmark)
 
-### Quick Start
+## Brain Wallet (Key Generation Tool)
 
-1. Download and install
-2. Create a new wallet or restore from seed
-3. Wallet syncs automatically via ElectrumX servers
+:::caution Not a Full Wallet
+This is a **key/address generation utility only**. It cannot send transactions, check balances, or interact with the blockchain. Use the Desktop Wallet for full functionality.
+:::
 
-### Security Features
-
-- **Seed phrase**: 12-word recovery phrase
-- **Encryption**: Password-protected wallet files
-- **Two-factor**: Hardware wallet integration
-- **Verification**: SPV verification of transactions
-
-### Connecting to Servers
-
-Default servers are configured. To add custom servers:
-
-```
-Tools → Network → Server
-```
-
-## Brain Wallet (Web)
-
-A web-based wallet for quick access without installation.
+A web-based tool for generating Bitmark addresses and private keys from a passphrase.
 
 **URL**: [project-bitmark.github.io/brain](https://project-bitmark.github.io/brain/)
 
-### Features
+```mermaid
+flowchart LR
+    subgraph brain["🔑 BRAIN WALLET CAPABILITIES"]
+        direction TB
+        subgraph can["✅ CAN DO"]
+            C1["Generate addresses"]
+            C2["Derive private keys"]
+            C3["Create QR codes"]
+            C4["Work offline"]
+        end
+        subgraph cannot["❌ CANNOT DO"]
+            N1["Send transactions"]
+            N2["Check balances"]
+            N3["Receive notifications"]
+            N4["Sign transactions"]
+        end
+    end
 
-- No installation required
-- Generate addresses from passphrases
-- Offline capable (save the page)
-- Transaction signing
-- QR code generation
+    style brain fill:#f3e8ff,stroke:#7c3aed,stroke-width:2px
+    style can fill:#dcfce7,stroke:#22c55e
+    style cannot fill:#fee2e2,stroke:#ef4444
+    style C1 fill:#f0fdf4,stroke:#22c55e
+    style C2 fill:#f0fdf4,stroke:#22c55e
+    style C3 fill:#f0fdf4,stroke:#22c55e
+    style C4 fill:#f0fdf4,stroke:#22c55e
+    style N1 fill:#fef2f2,stroke:#ef4444
+    style N2 fill:#fef2f2,stroke:#ef4444
+    style N3 fill:#fef2f2,stroke:#ef4444
+    style N4 fill:#fef2f2,stroke:#ef4444
+```
+
+### Use Cases
+
+This tool is useful for:
+- Generating receive addresses offline
+- Deriving keys from a memorable passphrase
+- Creating paper wallet addresses
+- Advanced users who manage keys separately
 
 ### Security Warning
 
-:::warning
-Brain wallets require you to remember a strong passphrase. Weak passphrases can be cracked! Use only for small amounts or with very strong, unique passphrases.
+:::warning Strong Passphrase Required
+Brain wallets derive keys from your passphrase. Weak passphrases can be cracked! Use only with very strong, unique passphrases (20+ characters with numbers and symbols).
 :::
 
 ### Best Practices
@@ -146,6 +219,7 @@ Brain wallets require you to remember a strong passphrase. Weak passphrases can 
 3. Never use dictionary words or common phrases
 4. Store the passphrase securely (password manager)
 5. Test recovery before depositing funds
+6. **Use Desktop Wallet to actually send/receive funds**
 
 ## Paper Wallet
 
@@ -203,12 +277,34 @@ bitmark-cli backupwallet /path/to/backup.dat
 
 ## Security Tips
 
-1. **Backup regularly**: Before major transactions
-2. **Encrypt wallet**: Use strong passwords
-3. **Verify addresses**: Double-check before sending
-4. **Test small amounts**: Before large transfers
-5. **Keep software updated**: Security patches
-6. **Use cold storage**: For long-term holdings
+```mermaid
+flowchart LR
+    subgraph security["🛡️ SECURITY BEST PRACTICES"]
+        direction TB
+        subgraph row1[" "]
+            direction LR
+            S1["💾 **Backup**<br/>Before transactions"]
+            S2["🔐 **Encrypt**<br/>Strong passwords"]
+            S3["✅ **Verify**<br/>Double-check addresses"]
+        end
+        subgraph row2[" "]
+            direction LR
+            S4["🧪 **Test**<br/>Small amounts first"]
+            S5["🔄 **Update**<br/>Security patches"]
+            S6["❄️ **Cold Storage**<br/>Long-term holdings"]
+        end
+    end
+
+    style security fill:#f3e8ff,stroke:#7c3aed,stroke-width:2px
+    style row1 fill:transparent,stroke:none
+    style row2 fill:transparent,stroke:none
+    style S1 fill:#ede9fe,stroke:#8b5cf6
+    style S2 fill:#ede9fe,stroke:#8b5cf6
+    style S3 fill:#ede9fe,stroke:#8b5cf6
+    style S4 fill:#ede9fe,stroke:#8b5cf6
+    style S5 fill:#ede9fe,stroke:#8b5cf6
+    style S6 fill:#ede9fe,stroke:#8b5cf6
+```
 
 ## Troubleshooting
 
