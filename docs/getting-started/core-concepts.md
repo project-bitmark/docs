@@ -51,16 +51,37 @@ Unlike most cryptocurrencies that use a single mining algorithm, Bitmark support
 
 ### The Eight Algorithms
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    BITMARK ALGORITHMS                       │
-├─────────────┬─────────────┬─────────────┬──────────────────┤
-│   SCRYPT    │   SHA256D   │  YESCRYPT   │     ARGON2D      │
-│  (ASIC/GPU) │   (ASIC)    │  (CPU/GPU)  │      (CPU)       │
-├─────────────┼─────────────┼─────────────┼──────────────────┤
-│     X17     │ LYRA2REv2   │  EQUIHASH   │   CRYPTONIGHT    │
-│    (GPU)    │    (GPU)    │ (GPU/ASIC)  │    (CPU/GPU)     │
-└─────────────┴─────────────┴─────────────┴──────────────────┘
+```mermaid
+flowchart TB
+    subgraph algos["⛏️ BITMARK MINING ALGORITHMS"]
+        direction TB
+        subgraph row1[" "]
+            direction LR
+            A1["**SCRYPT**<br/>ASIC/GPU"]
+            A2["**SHA256D**<br/>ASIC"]
+            A3["**YESCRYPT**<br/>CPU/GPU"]
+            A4["**ARGON2D**<br/>CPU"]
+        end
+        subgraph row2[" "]
+            direction LR
+            B1["**X17**<br/>GPU"]
+            B2["**LYRA2REv2**<br/>GPU"]
+            B3["**EQUIHASH**<br/>GPU/ASIC"]
+            B4["**CRYPTONIGHT**<br/>CPU/GPU"]
+        end
+    end
+
+    style algos fill:#f3e8ff,stroke:#7c3aed,stroke-width:2px
+    style row1 fill:transparent,stroke:none
+    style row2 fill:transparent,stroke:none
+    style A1 fill:#ede9fe,stroke:#8b5cf6,stroke-width:1px
+    style A2 fill:#ede9fe,stroke:#8b5cf6,stroke-width:1px
+    style A3 fill:#ede9fe,stroke:#8b5cf6,stroke-width:1px
+    style A4 fill:#ede9fe,stroke:#8b5cf6,stroke-width:1px
+    style B1 fill:#ede9fe,stroke:#8b5cf6,stroke-width:1px
+    style B2 fill:#ede9fe,stroke:#8b5cf6,stroke-width:1px
+    style B3 fill:#ede9fe,stroke:#8b5cf6,stroke-width:1px
+    style B4 fill:#ede9fe,stroke:#8b5cf6,stroke-width:1px
 ```
 
 Each algorithm:
@@ -104,10 +125,24 @@ Bitmark uses **Dark Gravity Wave v3 (DGWv3)** for difficulty adjustment, customi
 
 The emission uses a combined **halving + quartering** pattern:
 
-```
-Block Rewards Over Time:
-20 → 15 → 10 → 7.5 → 5 → 3.75 → 2.5 → ...
-     Q1    H1    Q2    H2    Q3    H3
+```mermaid
+flowchart LR
+    R20["**20**<br/>MARKS"] -->|"Q1<br/>×0.75"| R15["**15**<br/>MARKS"]
+    R15 -->|"H1<br/>÷2"| R10["**10**<br/>MARKS"]
+    R10 -->|"Q2<br/>×0.75"| R75["**7.5**<br/>MARKS"]
+    R75 -->|"H2<br/>÷2"| R5["**5**<br/>MARKS"]
+    R5 -->|"Q3<br/>×0.75"| R375["**3.75**<br/>MARKS"]
+    R375 -->|"H3<br/>÷2"| R25["**2.5**<br/>MARKS"]
+    R25 -->|"..."| Future["..."]
+
+    style R20 fill:#7c3aed,stroke:#5b21b6,color:#fff
+    style R15 fill:#8b5cf6,stroke:#6d28d9,color:#fff
+    style R10 fill:#a78bfa,stroke:#7c3aed,color:#fff
+    style R75 fill:#c4b5fd,stroke:#8b5cf6
+    style R5 fill:#ddd6fe,stroke:#a78bfa
+    style R375 fill:#ede9fe,stroke:#c4b5fd
+    style R25 fill:#f5f3ff,stroke:#ddd6fe
+    style Future fill:#faf5ff,stroke:#ede9fe
 ```
 
 Where:
@@ -131,12 +166,36 @@ A **Subsidy Scaling Factor (SSF)** adjusts rewards based on network hashrate:
 
 A mark is a "like" that carries real economic value:
 
-```
-Traditional Social Media          Marking System
-─────────────────────────         ──────────────
-Like → Number on screen           Mark → Real value transferred
-Creator → Gets nothing            Creator → Gets paid
-Platform → Sells attention        Protocol → Value flows directly
+```mermaid
+flowchart TB
+    subgraph traditional["❌ TRADITIONAL SOCIAL MEDIA"]
+        direction TB
+        T1["👍 Like"] --> T2["Number on screen"]
+        T3["🎨 Creator"] --> T4["Gets nothing"]
+        T5["🏢 Platform"] --> T6["Sells attention"]
+    end
+
+    subgraph marking["✅ MARKING SYSTEM"]
+        direction TB
+        M1["✨ Mark"] --> M2["Real value transferred"]
+        M3["🎨 Creator"] --> M4["Gets paid"]
+        M5["🔗 Protocol"] --> M6["Value flows directly"]
+    end
+
+    style traditional fill:#fef2f2,stroke:#dc2626,stroke-width:2px
+    style marking fill:#f0fdf4,stroke:#16a34a,stroke-width:2px
+    style T1 fill:#fee2e2,stroke:#ef4444
+    style T2 fill:#fee2e2,stroke:#ef4444
+    style T3 fill:#fee2e2,stroke:#ef4444
+    style T4 fill:#fee2e2,stroke:#ef4444
+    style T5 fill:#fee2e2,stroke:#ef4444
+    style T6 fill:#fee2e2,stroke:#ef4444
+    style M1 fill:#dcfce7,stroke:#22c55e
+    style M2 fill:#dcfce7,stroke:#22c55e
+    style M3 fill:#dcfce7,stroke:#22c55e
+    style M4 fill:#dcfce7,stroke:#22c55e
+    style M5 fill:#dcfce7,stroke:#22c55e
+    style M6 fill:#dcfce7,stroke:#22c55e
 ```
 
 ### How Marks Work
@@ -151,12 +210,23 @@ Platform → Sells attention        Protocol → Value flows directly
 
 Marks are recorded on-chain using **OP_RETURN** transactions:
 
-```
-Mark Data (37 bytes):
-┌─────────┬─────────┬─────────┬───────────────────────────────┐
-│   MRK   │ VERSION │  TYPE   │     SHA256(reference)         │
-│ 3 bytes │ 1 byte  │ 1 byte  │         32 bytes              │
-└─────────┴─────────┴─────────┴───────────────────────────────┘
+```mermaid
+flowchart LR
+    subgraph mrk["📦 MARK DATA (37 bytes)"]
+        direction LR
+        F1["**MRK**<br/>3 bytes"]
+        F2["**VERSION**<br/>1 byte"]
+        F3["**TYPE**<br/>1 byte"]
+        F4["**SHA256(reference)**<br/>32 bytes"]
+    end
+
+    F1 --- F2 --- F3 --- F4
+
+    style mrk fill:#f3e8ff,stroke:#7c3aed,stroke-width:2px
+    style F1 fill:#7c3aed,stroke:#5b21b6,color:#fff
+    style F2 fill:#8b5cf6,stroke:#6d28d9,color:#fff
+    style F3 fill:#a78bfa,stroke:#7c3aed,color:#fff
+    style F4 fill:#c4b5fd,stroke:#8b5cf6
 ```
 
 Mark types include:
@@ -180,26 +250,34 @@ The smallest divisible unit is **1 satoshi** = 0.00000001 BTM = 1 Markbit.
 
 ## Network Architecture
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      USER LAYER                             │
-│    (Wallets, Applications, Marking Interface)               │
-└───────────────────────────┬─────────────────────────────────┘
-                            │
-┌───────────────────────────▼─────────────────────────────────┐
-│                      API LAYER                              │
-│           (REST API, RPC, ElectrumX)                        │
-└───────────────────────────┬─────────────────────────────────┘
-                            │
-┌───────────────────────────▼─────────────────────────────────┐
-│                    NODE LAYER                               │
-│          (Full Nodes, Miners, Indexers)                     │
-└───────────────────────────┬─────────────────────────────────┘
-                            │
-┌───────────────────────────▼─────────────────────────────────┐
-│                  BLOCKCHAIN LAYER                           │
-│           (Consensus, Transactions, Blocks)                 │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph user["👤 USER LAYER"]
+        U["Wallets, Applications, Marking Interface"]
+    end
+
+    subgraph api["🔌 API LAYER"]
+        A["REST API, RPC, ElectrumX"]
+    end
+
+    subgraph node["🖥️ NODE LAYER"]
+        N["Full Nodes, Miners, Indexers"]
+    end
+
+    subgraph chain["⛓️ BLOCKCHAIN LAYER"]
+        B["Consensus, Transactions, Blocks"]
+    end
+
+    user --> api --> node --> chain
+
+    style user fill:#f3e8ff,stroke:#7c3aed,stroke-width:2px
+    style api fill:#ede9fe,stroke:#8b5cf6,stroke-width:2px
+    style node fill:#ddd6fe,stroke:#a78bfa,stroke-width:2px
+    style chain fill:#c4b5fd,stroke:#8b5cf6,stroke-width:2px
+    style U fill:#faf5ff,stroke:#7c3aed
+    style A fill:#f5f3ff,stroke:#8b5cf6
+    style N fill:#ede9fe,stroke:#a78bfa
+    style B fill:#ddd6fe,stroke:#8b5cf6
 ```
 
 ## Key Terminology
