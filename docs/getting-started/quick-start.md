@@ -8,21 +8,7 @@ description: Get up and running with Bitmark in minutes
 
 Get started with Bitmark in just a few steps.
 
-## Option 1: Light Wallet (Recommended for Users)
-
-The easiest way to start using Bitmark is with the Electrum-based light wallet.
-
-### Download
-
-Get the latest release from [GitHub Releases](https://github.com/project-bitmark/electrum-bitmark/releases).
-
-### Setup
-
-1. Download and install the Electrum-Bitmark wallet
-2. Create a new wallet or restore from seed
-3. Your wallet will sync automatically with ElectrumX servers
-
-## Option 2: Desktop Wallet (Full Node)
+## Option 1: Desktop Wallet (Recommended)
 
 For full network participation, run the core Bitmark wallet.
 
@@ -62,6 +48,14 @@ EOF
 ./bitmark-cli getblockchaininfo
 ```
 
+## Option 2: Light Wallet (Coming Soon)
+
+:::info Work in Progress
+The Electrum-Bitmark light wallet is currently under development. Check [GitHub](https://github.com/project-bitmark/electrum-bitmark) for progress and updates.
+:::
+
+Once released, this will be the easiest way to use Bitmark without downloading the full blockchain.
+
 ## Option 3: Web Wallet
 
 For quick access without installation, use the [Brain Wallet](https://project-bitmark.github.io/brain/).
@@ -94,7 +88,6 @@ Transaction fees are typically very low (around 0.001 MARKS).
 View transactions and blocks:
 
 - [Chainz Explorer](https://chainz.cryptoid.info/marks/)
-- [OpenMarks Explorer](http://explorer.bitmark.co)
 
 ## What's Next?
 
