@@ -14,14 +14,16 @@ The Marking system enables a wide range of applications beyond simple "likes wit
 
 Writers can receive direct payment for valuable content:
 
-```
-Reader discovers great article
-    ↓
-Reader marks the article (Type 0x01: URL)
-    ↓
-Value transfers to writer's address
-    ↓
-Writer earns without ads or subscriptions
+```mermaid
+flowchart TB
+    A["📖 Reader discovers great article"] --> B["✨ Reader marks the article<br/><small>Type 0x01: URL</small>"]
+    B --> C["💸 Value transfers to writer's address"]
+    C --> D["🎉 Writer earns without ads or subscriptions"]
+
+    style A fill:#f3e8ff,stroke:#7c3aed
+    style B fill:#ede9fe,stroke:#8b5cf6
+    style C fill:#ddd6fe,stroke:#a78bfa
+    style D fill:#dcfce7,stroke:#22c55e
 ```
 
 **Benefits:**
@@ -34,28 +36,32 @@ Writer earns without ads or subscriptions
 
 Artists can monetize individual works:
 
-```
-Fan listens to song
-    ↓
-Fan marks the song (Type 0x03: Content)
-    ↓
-Artist receives payment
-    ↓
-Fan builds reputation as curator
+```mermaid
+flowchart TB
+    A["🎵 Fan listens to song"] --> B["✨ Fan marks the song<br/><small>Type 0x03: Content</small>"]
+    B --> C["💰 Artist receives payment"]
+    C --> D["⭐ Fan builds reputation as curator"]
+
+    style A fill:#f3e8ff,stroke:#7c3aed
+    style B fill:#ede9fe,stroke:#8b5cf6
+    style C fill:#dcfce7,stroke:#22c55e
+    style D fill:#fef3c7,stroke:#f59e0b
 ```
 
 ### Video Content
 
 Complement or replace ad-based revenue:
 
-```
-Video provides value
-    ↓
-Viewers mark it
-    ↓
-Creator earns based on actual value delivered
-    ↓
-No need to optimize for "watch time"
+```mermaid
+flowchart TB
+    A["🎬 Video provides value"] --> B["✨ Viewers mark it"]
+    B --> C["💸 Creator earns based on actual value delivered"]
+    C --> D["🎯 No need to optimize for 'watch time'"]
+
+    style A fill:#f3e8ff,stroke:#7c3aed
+    style B fill:#ede9fe,stroke:#8b5cf6
+    style C fill:#dcfce7,stroke:#22c55e
+    style D fill:#dbeafe,stroke:#3b82f6
 ```
 
 ## Proof of Existence
@@ -148,14 +154,16 @@ createMark(0x08, eventId);  // Type: Nostr Event
 
 Build trust networks through marking patterns:
 
-```
-Alice marks Bob's profile
-    ↓
-Charlie trusts Alice
-    ↓
-Charlie can partially trust Bob
-    ↓
-Reputation flows through the network
+```mermaid
+flowchart TB
+    A["👩 Alice marks Bob's profile"] --> B["👨 Charlie trusts Alice"]
+    B --> C["🤝 Charlie can partially trust Bob"]
+    C --> D["🌐 Reputation flows through the network"]
+
+    style A fill:#f3e8ff,stroke:#7c3aed
+    style B fill:#ede9fe,stroke:#8b5cf6
+    style C fill:#ddd6fe,stroke:#a78bfa
+    style D fill:#c4b5fd,stroke:#8b5cf6
 ```
 
 ## Infrastructure Marketplace
@@ -180,14 +188,19 @@ free_tier:
 
 Operators compete on quality and reputation:
 
-```
-┌─────────────────────────────────────────────────────────┐
-│  EXPLORER LEADERBOARD                                   │
-├─────────────────────────────────────────────────────────┤
-│  #1  fast-explorer.io     Rep: 12,847   Uptime: 99.8%  │
-│  #2  reliable-api.com     Rep: 8,234    Uptime: 99.2%  │
-│  #3  community-node       Rep: 892      Uptime: 97.5%  │
-└─────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph leaderboard["🏆 EXPLORER LEADERBOARD"]
+        direction TB
+        R1["🥇 #1 **fast-explorer.io**<br/>Rep: 12,847 · Uptime: 99.8%"]
+        R2["🥈 #2 **reliable-api.com**<br/>Rep: 8,234 · Uptime: 99.2%"]
+        R3["🥉 #3 **community-node**<br/>Rep: 892 · Uptime: 97.5%"]
+    end
+
+    style leaderboard fill:#f3e8ff,stroke:#7c3aed,stroke-width:2px
+    style R1 fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+    style R2 fill:#f3f4f6,stroke:#9ca3af,stroke-width:2px
+    style R3 fill:#fed7aa,stroke:#ea580c,stroke-width:2px
 ```
 
 ## Spam Prevention
@@ -196,23 +209,36 @@ Operators compete on quality and reputation:
 
 Require marks to post, returned if content is valuable:
 
-```
-Post with 0.1 mark stake
-    ↓
-Community evaluates
-    ↓
-Valuable? → Stake returned + marks received
-Spam?     → Stake lost (burned or redistributed)
+```mermaid
+flowchart TB
+    A["📝 Post with 0.1 mark stake"] --> B["👥 Community evaluates"]
+    B --> C{Valuable?}
+    C -->|Yes| D["✅ Stake returned + marks received"]
+    C -->|Spam| E["❌ Stake lost<br/><small>burned or redistributed</small>"]
+
+    style A fill:#f3e8ff,stroke:#7c3aed
+    style B fill:#ede9fe,stroke:#8b5cf6
+    style C fill:#fef3c7,stroke:#f59e0b
+    style D fill:#dcfce7,stroke:#22c55e
+    style E fill:#fee2e2,stroke:#ef4444
 ```
 
 ### Economic Filtering
 
 High-value content rises naturally:
 
-```
-Total marks received → Higher visibility
-Cost to spam         → Economically prohibitive
-Quality signals      → Built into the system
+```mermaid
+flowchart LR
+    A["✨ Total marks received"] --> B["📈 Higher visibility"]
+    C["💸 Cost to spam"] --> D["🚫 Economically prohibitive"]
+    E["⭐ Quality signals"] --> F["🔧 Built into the system"]
+
+    style A fill:#f3e8ff,stroke:#7c3aed
+    style B fill:#dcfce7,stroke:#22c55e
+    style C fill:#fee2e2,stroke:#ef4444
+    style D fill:#fecaca,stroke:#dc2626
+    style E fill:#dbeafe,stroke:#3b82f6
+    style F fill:#bfdbfe,stroke:#2563eb
 ```
 
 ## Charity and Public Goods
@@ -248,14 +274,16 @@ console.log(`Total donated: ${sum(charityMarks)} BTM`);
 
 Earn marks for sharing quality content:
 
-```
-Alice shares article
-    ↓
-Bob finds it through Alice's link
-    ↓
-Bob marks the article
-    ↓
-Creator: 90%, Alice: 10%
+```mermaid
+flowchart TB
+    A["👩 Alice shares article"] --> B["👨 Bob finds it through Alice's link"]
+    B --> C["✨ Bob marks the article"]
+    C --> D["💰 Creator: 90% · Alice: 10%"]
+
+    style A fill:#f3e8ff,stroke:#7c3aed
+    style B fill:#ede9fe,stroke:#8b5cf6
+    style C fill:#ddd6fe,stroke:#a78bfa
+    style D fill:#dcfce7,stroke:#22c55e
 ```
 
 ### Tiered Recognition
@@ -275,28 +303,32 @@ Different mark amounts for different recognition levels:
 
 Companies can use marking for internal knowledge sharing:
 
-```
-Employee writes valuable documentation
-    ↓
-Colleagues mark it
-    ↓
-Contribution tracked and rewarded
-    ↓
-Knowledge sharing incentivized
+```mermaid
+flowchart TB
+    A["📝 Employee writes valuable documentation"] --> B["✨ Colleagues mark it"]
+    B --> C["📊 Contribution tracked and rewarded"]
+    C --> D["🚀 Knowledge sharing incentivized"]
+
+    style A fill:#f3e8ff,stroke:#7c3aed
+    style B fill:#ede9fe,stroke:#8b5cf6
+    style C fill:#ddd6fe,stroke:#a78bfa
+    style D fill:#dcfce7,stroke:#22c55e
 ```
 
 ### Customer Feedback
 
 Products and services can be marked:
 
-```
-Customer has great experience
-    ↓
-Customer marks the service (Type 0x01: URL to service page)
-    ↓
-Business receives verifiable positive signal
-    ↓
-Reputation accumulates transparently
+```mermaid
+flowchart TB
+    A["😊 Customer has great experience"] --> B["✨ Customer marks the service<br/><small>Type 0x01: URL to service page</small>"]
+    B --> C["✅ Business receives verifiable positive signal"]
+    C --> D["📈 Reputation accumulates transparently"]
+
+    style A fill:#f3e8ff,stroke:#7c3aed
+    style B fill:#ede9fe,stroke:#8b5cf6
+    style C fill:#ddd6fe,stroke:#a78bfa
+    style D fill:#dcfce7,stroke:#22c55e
 ```
 
 ## Research Applications
@@ -305,28 +337,32 @@ Reputation accumulates transparently
 
 Mark research papers as a form of citation:
 
-```
-Researcher finds valuable paper
-    ↓
-Researcher marks the paper
-    ↓
-Original authors receive recognition + value
-    ↓
-Citation metrics become economic metrics
+```mermaid
+flowchart TB
+    A["🔬 Researcher finds valuable paper"] --> B["✨ Researcher marks the paper"]
+    B --> C["🎓 Original authors receive recognition + value"]
+    C --> D["📊 Citation metrics become economic metrics"]
+
+    style A fill:#f3e8ff,stroke:#7c3aed
+    style B fill:#ede9fe,stroke:#8b5cf6
+    style C fill:#ddd6fe,stroke:#a78bfa
+    style D fill:#dcfce7,stroke:#22c55e
 ```
 
 ### Open Science Funding
 
 Fund research directly through marks:
 
-```
-Scientist publishes open access paper
-    ↓
-Community marks valuable research
-    ↓
-Funding flows to productive researchers
-    ↓
-No grant committee bottleneck
+```mermaid
+flowchart TB
+    A["📄 Scientist publishes open access paper"] --> B["✨ Community marks valuable research"]
+    B --> C["💰 Funding flows to productive researchers"]
+    C --> D["🚀 No grant committee bottleneck"]
+
+    style A fill:#f3e8ff,stroke:#7c3aed
+    style B fill:#ede9fe,stroke:#8b5cf6
+    style C fill:#ddd6fe,stroke:#a78bfa
+    style D fill:#dcfce7,stroke:#22c55e
 ```
 
 ## Implementation Examples
