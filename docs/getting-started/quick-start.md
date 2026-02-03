@@ -56,13 +56,18 @@ The Electrum-Bitmark light wallet is currently under development. Check [GitHub]
 
 Once released, this will be the easiest way to use Bitmark without downloading the full blockchain.
 
-## Option 3: Web Wallet
+## Advanced: Key Generation Tool
 
-For quick access without installation, use the [Brain Wallet](https://project-bitmark.github.io/brain/).
+The [Brain Wallet](https://project-bitmark.github.io/brain/) is a key/address generation utility.
 
-:::warning
-Brain wallets require you to remember your passphrase. Use a strong, unique passphrase and consider using a hardware-generated wallet for significant funds.
+:::caution Not a Full Wallet
+This tool only generates addresses and private keys from a passphrase. It **cannot send transactions** or check balances. Use the Desktop Wallet for full functionality.
 :::
+
+This is useful for:
+- Generating receive addresses offline
+- Deriving keys from a memorable passphrase
+- Advanced users who manage keys separately
 
 ## Receiving Bitmark
 
